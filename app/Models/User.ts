@@ -7,6 +7,11 @@ import Like from './Like'
 import Retweet from './Retweet'
 
 export default class User extends BaseModel {
+
+  static get table() {
+    return 'user'
+  } 
+
   @column({ isPrimary: true })
   public id: number
 

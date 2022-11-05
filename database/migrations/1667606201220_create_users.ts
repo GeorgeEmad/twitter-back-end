@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'user'
+  public tableName = 'user'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('description').defaultTo('')
       table.enu('gender', ['male', 'female'], {
         useNative: true,
-        enumName: 'gender',
+        enumName: 'user_gender',
         existingType: false,
       }).defaultTo('male')
       table.integer('age').nullable()
