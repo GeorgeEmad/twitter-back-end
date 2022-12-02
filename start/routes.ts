@@ -1,23 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| This file is dedicated for defining HTTP routes. A single file is enough
-| for majority of projects, however you can define routes in different
-| files and just make sure to import them inside this file. For example
-|
-| Define routes in following two files
-| ├── start/routes/cart.ts
-| ├── start/routes/customer.ts
-|
-| and then import them inside `start/routes.ts` as follows
-|
-| import './routes/cart'
-| import './routes/customer'
-|
-*/
-
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
@@ -30,30 +10,23 @@ Route.post('/api/user/register', 'AuthController.user_register') //register
 Route.post('/api/user/logout', 'AuthController.user_logout') //logout
 
 
-
-
-
-
-
-
-
 /**
- * Users only
+ * User info
  */
 // Route.group(() => {
-//   // User info
-//   Route.post('/api/user/info', 'UsersController.userInfo')
-//   Route.put('/api/user/profile/update', 'UsersController.updateProfile') //update user profile
-//   // Team
-//   Route.post('/api/dashboard/myteam', 'TeamMembersController.myTeamMembers') //my team members
-//   // Gift
-//   Route.post('/api/dashboard/gift/send', 'GiftsController.create') //send gift
-//   Route.post('/api/dashboard/gift/open', 'GiftsController.open') //open gift
-//   Route.get('/api/dashboard/gift/all', 'GiftsController.getAll') //get all gifts
-//   // Requests
-//   Route.post('/api/request/create', 'RequestsController.create') //create request
-//   Route.post('/api/request/cancel', 'RequestsController.cancel')
+  // User info
+  Route.post('/api/user/info', 'UsersController.userInfo')
+
+  // Post
+  // Route.post('/api/request/create', 'RequestsController.create') //create request
+  // Route.post('/api/request/cancel', 'RequestsController.cancel')
 // }).middleware(['auth:Users'])
+
+
+
+
+
+
 // /**
 //  * Admins only
 //  */

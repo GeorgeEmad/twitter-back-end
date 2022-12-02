@@ -4,6 +4,9 @@ import User from './User'
 import Post from './Post'
 
 export default class Retweet extends BaseModel {
+  static get table() {
+    return 'retweet'
+  } 
   @column({ isPrimary: true })
   public id: number
 

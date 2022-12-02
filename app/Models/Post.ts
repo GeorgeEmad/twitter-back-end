@@ -4,6 +4,9 @@ import User from './User'
 import Retweet from './Retweet'
 import Like from './Like'
 export default class Post extends BaseModel {
+  static get table() {
+    return 'post'
+  } 
   @column({ isPrimary: true })
   public id: number
 

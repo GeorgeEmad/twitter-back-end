@@ -23,6 +23,12 @@ export default class AuthController {
     }
   }
 
+
+  /**
+   * User register
+   * @param param0
+   * @returns
+   */
   public async user_register({ request, response }: HttpContextContract) {
     const registerSchema = schema.create({
         password: schema.string([rules.minLength(6)]),
@@ -32,21 +38,12 @@ export default class AuthController {
         gender: schema.enum.optional(['male', 'female'] as const),
     })
     let {username, password, age, description, gender} = await request.validate({ schema: registerSchema })
-
     username = username.toLowerCase()
     const user = new User()
-    user.fill({
-      username,
-      password,
-      age,
-      description,
-      gender
-    })
+    user.fill({ username, password, age, description, gender})
     await user.save()
     return response.created(user)
   }
-
-
 
 
   /**
