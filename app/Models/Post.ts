@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, BelongsTo, belongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
-import Retweet from './Retweet'
 import Like from './Like'
 export default class Post extends BaseModel {
   static get table() {
@@ -32,10 +31,5 @@ export default class Post extends BaseModel {
     foreignKey: 'post_id',
   })
   public post_likes: HasMany<typeof Like>
-
-  @hasMany(() => Retweet, {
-    foreignKey: 'post_id',
-  })
-  public post_retweets: HasMany<typeof Retweet>
 
 }

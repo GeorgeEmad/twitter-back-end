@@ -13,7 +13,6 @@ export default class UsersController {
             .where('id', Number(user_id))
             .preload('posts')
             .preload('user_likes')
-            .preload('user_retweets')
             .preload('user_likes')
             .preload("followers")
             .preload("following")
