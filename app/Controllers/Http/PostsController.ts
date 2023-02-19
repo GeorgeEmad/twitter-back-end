@@ -7,7 +7,6 @@ export default class PostsController {
 
     public async create_post({auth, request, response }: HttpContextContract) {
         const validations =  schema.create({
-        //   user_id: schema.number([rules.exists({ table: 'user', column: 'id' })]),
           content: schema.string([rules.maxLength(255)])
         })
         let { content } = await request.validate({ schema: validations })
@@ -17,5 +16,23 @@ export default class PostsController {
           })
           return response.created(created_post)
     }
+
+    public async get_post({request}: HttpContextContract) {
+      const validations = schema.create({
+        params: schema.object().members({
+          id: schema.string({escape: true, trim: true}, [
+            rules.exists({ table: 'post', column: 'id' })
+          ])
+        })
+    });
+    let query = await request.validate({ schema: validations })
+
+    console.log(query.params.id)
+      const post = await Post.findOrFail(query.params.id)
+      return post 
+  }
+
+  // public async delete_post({request}: HttpContextContract) {}
+
 
 }

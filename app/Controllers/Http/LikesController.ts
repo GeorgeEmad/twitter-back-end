@@ -16,4 +16,8 @@ export default class LikesController {
           return response.created(created_like)
     }
 
+    // public async unlike({auth, request, response }: HttpContextContract) {
+ 
+    // }
+
 }

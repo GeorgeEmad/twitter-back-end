@@ -15,4 +15,8 @@ export default class FollowsController {
           })
           return response.created(created_follow)
     }
+
+    // public async ufollow({auth, request, response }: HttpContextContract) {
+
+    // }
 }
