@@ -26,9 +26,7 @@ export default class PostsController {
         })
     });
     let query = await request.validate({ schema: validations })
-
-    console.log(query.params.id)
-      const post = await Post.findOrFail(query.params.id)
+      const post = await Post.query().where('id', Number(query.params.id)).preload("retweet_post").firstOrFail();      
       return post 
   }
 

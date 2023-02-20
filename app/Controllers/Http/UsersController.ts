@@ -27,7 +27,7 @@ export default class UsersController {
       let user = await User.query().where('id', Number(user_id)).preload("following").firstOrFail();
       let follows_ids = user.following.map((follow)=>{ return follow.user_followed_id })
       follows_ids.push(Number(user_id))
-      let timeline_posts = Post.query().whereIn('user_id', follows_ids).orderBy('created_at', 'desc')
+      let timeline_posts = Post.query().whereIn('user_id', follows_ids).orderBy('created_at', 'desc').preload('retweet_post')
       return timeline_posts
   }
 

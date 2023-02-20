@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, BelongsTo, belongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, BelongsTo, belongsTo, hasMany, HasMany, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import Like from './Like'
 export default class Post extends BaseModel {
@@ -9,6 +9,9 @@ export default class Post extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public retweet_post_id: number
+  
   @column()
   public content: string
 
@@ -31,5 +34,11 @@ export default class Post extends BaseModel {
     foreignKey: 'post_id',
   })
   public post_likes: HasMany<typeof Like>
+
+  @belongsTo(() => Post, {
+    localKey:'id',
+    foreignKey: 'retweet_post_id',
+  })
+  public retweet_post: BelongsTo<typeof Post>
 
 }
